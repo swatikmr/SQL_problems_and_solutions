@@ -50,7 +50,8 @@ GROUP BY m.managerId
 HAVING COUNT(m.managerId)>=5;
 
 -- Leetcode 607: Sales Person
--- Write a solution to find the names of all the salespersons who did not have any orders related to the company with the name "RED".
+-- Write a solution to find the names of all the salespersons who did not have any orders related to the company with
+-- the name "RED".
 
 SELECT s.name
 FROM SalesPerson s
@@ -61,7 +62,14 @@ WHERE s.name NOT IN
     LEFT JOIN Company c ON o.com_id=c.com_id
     WHERE c.name="RED");
 
+-- Leetcode 1075: Project Employee 1
+-- Given two tables as 'Project' and 'Employee' write a solution that reports the average experience years of all the
+-- employees for each project, rounded to 2 digits.
 
+SELECT p.project_id, round(AVG(e.experience_years),2) AS average_years
+FROM Project p
+LEFT JOIN Employee e ON p.employee_id=e.employee_id
+GROUP BY p.project_id;
 
 
 
